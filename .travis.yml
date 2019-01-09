@@ -2,6 +2,9 @@ language: clojure
 lein: 2.4.0
 
 deploy:
+  provider: releases
+  api_key: $RELEASES_TOKEN
+  file: "resources/stand.scad"
   skip_cleanup: true
   draft: true
   
