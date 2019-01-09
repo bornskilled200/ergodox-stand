@@ -21,7 +21,7 @@
 ;; CUSTOMIZABLES
 
 ; Which case do you want to support?
-(def rect-depth fullhand-depth)	; choose fullhand-depth or standard-depth
+(def rect-depth standard-depth)	; choose fullhand-depth or standard-depth
 
 ; Angles for tenting and tilting, to your preferences
 (def tent-degrees 6)			; side-to-side angle
