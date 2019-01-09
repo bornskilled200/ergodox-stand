@@ -1,4 +1,9 @@
 language: clojure
 lein: 2.4.0
 
+deploy:
+  skip_cleanup: true
+  draft: true
+  
+before_install: sudo apt-get install -y openscad
 script: echo "(use 'ergodox-stand.core :reload)" | lein repl
