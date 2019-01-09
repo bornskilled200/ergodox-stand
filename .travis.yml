@@ -4,9 +4,20 @@ lein: 2.4.0
 deploy:
   provider: releases
   api_key: $RELEASES_TOKEN
-  file: "resources/stand.scad"
+  file:
+    - "resources/fullhand-stand.scad"
+    - "resources/fullhand-stand.stl"
+    - "resources/standard-stand.scad"
+    - "resources/standard-stand.stl"
   skip_cleanup: true
   draft: true
   
 before_install: sudo apt-get install -y openscad
-script: echo "(use 'ergodox-stand.core :reload)" | lein repl
+script: 
+  - echo "(use 'ergodox-stand.core :reload)" | lein repl\
+  - mv resources/stand.scad resources/standard-stand.scad
+  - openscad -o standard-stand.stl standard-stand.scad
+  - sed -i 's/rect-depth standard-depth/rect-depth fullhand-depth/g' src/ergodox_stand/core.clj
+  - echo "(use 'ergodox-stand.core :reload)" | lein repl
+  - mv resources/stand.scad resources/fullhand-stand.scad
+  - openscad -o fullhand-stand.stl fullhand-stand.scad
