@@ -14,7 +14,7 @@ deploy:
   
 before_install: sudo apt-get install -y openscad
 script: 
-  - echo "(use 'ergodox-stand.core :reload)" | lein repl\
+  - echo "(use 'ergodox-stand.core :reload)" | lein repl
   - mv resources/stand.scad resources/standard-stand.scad
   - openscad -o resources/standard-stand.stl resources/standard-stand.scad
   - sed -i 's/rect-depth standard-depth/rect-depth fullhand-depth/g' src/ergodox_stand/core.clj
